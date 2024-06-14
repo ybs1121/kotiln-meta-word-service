@@ -6,12 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/apu/v1/word")
-class WordController {
-
-    @Autowired
-    lateinit var wordService: WordService
-
+@RequestMapping("/api/v1/word")
+class WordController constructor(private val wordService: WordService){
 
     @PostMapping
     fun saveWord(@RequestBody wordDto: WordDto): String {
@@ -23,4 +19,5 @@ class WordController {
     fun getAllWords(): List<WordDto> {
         return wordService.findAll()
     }
+
 }
